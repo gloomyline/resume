@@ -14,7 +14,7 @@
             margin:0;
         }
         .container{
-            height: 2900px;
+            height: 800px;
             width: 100%;
             background-color:#666;
         }
@@ -25,9 +25,31 @@
     <p class="container">
         <a href="tel:15240017969">15240017969</a>
     </p>
+    
+    <p>点击这个按钮，获取地理位置：</p>
+    <button id="btnClick">点我！</button>
+    <div id="demo"></div>
+    <script>
+        var x = document.getElementById('demo');
+        var btn = document.getElementById('btnClick');
+        function getLocation(){
+            if(navigator.geolocation){
+                naigator.geolocation.getCurrentPosition(showPosition,showError);   
+            }else{
+                x.innerHTML = 'Geolocation is not supported by this browser.';
+            }
+            function showPosition(position){
+                x.innerHTML = 'Latitude:' + position.coords.latitude + '<br />Longitude:' + position.coords.longitude;
+            }
+            function showError(err){
+                console.log(err);
+            }
+        }
+        x.onclick = getLocation();
+        
     <!-- JiaThis Button BEGIN -->
-    <script type="text/javascript" src="https://v3.jiathis.com/code/jiathis_r.js?move=0" charset="utf-8"></script>
-    <!-- JiaThis Button END -->
+    <!--<script type="text/javascript" src="https://v3.jiathis.com/code/jiathis_r.js?move=0" charset="utf-8"></script>-->
+    <!--JiaThis Button END -->
 </body>
 
 </html>
